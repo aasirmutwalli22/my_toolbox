@@ -54,6 +54,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with: 
           upload_url: ${{ steps.create-new-release.outputs.upload_url}}
-          assets_path: ./build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
-          assets_name: ToolBox-arm64-v8a-${{github.run_number}}.apk
-          assets_content_type: application/apk
+          asset_path: ./build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+          asset_name: ToolBox-arm64-v8a-${{github.run_number}}.apk
+          asset_content_type: application/apk
