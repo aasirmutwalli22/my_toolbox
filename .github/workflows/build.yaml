@@ -25,22 +25,6 @@ jobs:
 
       - name: Build APK
         run: flutter build apk --release --split-per-abi
-
-  release:
-    name: Release APK
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Upload APK artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-releases
-          path: |
-            build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
-            build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
-            build/app/outputs/flutter-apk/app-x86_64-release.apk
-
       - name: Release on GitHub 
         id: create-new-release
         uses: actions/create-release@v1
