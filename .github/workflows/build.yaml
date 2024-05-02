@@ -41,17 +41,17 @@ jobs:
             build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
             build/app/outputs/flutter-apk/app-x86_64-release.apk
 
-      - name: Release on GitHub
-        id: release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
-            build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
-            build/app/outputs/flutter-apk/app-x86_64-release.apk
-          tag_name: v${{ github.run_number }}  # Use a tag format appropriate for your project
-          release_name: Release ${{ github.run_number }}  # Provide a meaningful release name
-          draft: false
-          prerelease: false
+      - name: Release on GitHub 
+        id: create-new-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      - name: Upload assets to Github Release
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with: 
+          upload_url: ${{ steps.create-new-release.outputs.upload_url}}
+          assets_path: ./build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+          assets_name: ToolBox-arm64-v8a-${{github.run_number}}.apk
+          assets_content_type: application/apk
