@@ -49,7 +49,7 @@ jobs:
           asset_name: ToolBox-arm64-v8a-${{github.run_number}}.apk
           asset_content_type: application/apk
 
-  deploy to telegram:
+  deploy_to_telegram:
     name: Deploy release
     needs: build
     runs-on: ubuntu-latest
