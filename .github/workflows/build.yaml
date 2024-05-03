@@ -41,6 +41,8 @@ jobs:
           asset_path: build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
           asset_name: ToolBox-arm64-v8a-${{github.run_number}}.apk
           asset_content_type: application/apk
+      - name: Print Upload URL for reference
+        run: echo "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendDocument"
       - name: Send build files to telegram 
         run: |
           curl -F "document=build/app/outputs/flutter-apk/app-arm64-v8a-release.apk" \
