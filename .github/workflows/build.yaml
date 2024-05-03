@@ -59,7 +59,7 @@ jobs:
           ReleaseMessageForTelegram: |
             "New build released!
             Commit: ${{github.event.head_commit.message}}
-            Branch: ${{GITHUB_REF##*/}}"
+            Branch: ${{github.ref}}"
           SendMessageUrl: https://api.telegram.org/bot${{ vars.TELEGRAM_BOT_TOKEN }}/sendMessage
           SendDocumentUrl: https://api.telegram.org/bot${{ vars.TELEGRAM_BOT_TOKEN }}/sendDocument
         run: echo $ReleaseMessageForTelegram
