@@ -46,7 +46,7 @@ jobs:
           MESSAGE="New build released!
           Build Number: $BUILD_NUMBER
           Commit: $COMMIT_MESSAGE
-          Branch: $BRANCH_NAME 
+          Branch: $BRANCH_NAME"
 
           curl --location 'https://api.telegram.org/bot${{ vars.TELEGRAM_BOT_TOKEN }}/sendMessage' \
           --form 'chat_id="${{ vars.TELEGRAM_BOT_PERSONAL_CHAT_ID }}"' \
