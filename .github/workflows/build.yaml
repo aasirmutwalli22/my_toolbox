@@ -58,9 +58,8 @@ jobs:
         env:
           ReleaseMessageForTelegram: |
             "New build released!
-            Build Number: $BUILD_NUMBER
-            Commit: ${{COMMIT_MESSAGE}}
-            Branch: ${{BRANCH_NAME}}"
+            Commit: ${{github.event.head_commit.message}}
+            Branch: ${{GITHUB_REF##*/}}"
           SendMessageUrl: https://api.telegram.org/bot${{ vars.TELEGRAM_BOT_TOKEN }}/sendMessage
           SendDocumentUrl: https://api.telegram.org/bot${{ vars.TELEGRAM_BOT_TOKEN }}/sendDocument
         run: echo $ReleaseMessageForTelegram
