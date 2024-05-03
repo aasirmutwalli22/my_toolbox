@@ -63,7 +63,8 @@ jobs:
             Branch: $BRANCH_NAME"
           SendMessageUrl: https://api.telegram.org/bot${{ vars.TELEGRAM_BOT_TOKEN }}/sendMessage
           SendDocumentUrl: https://api.telegram.org/bot${{ vars.TELEGRAM_BOT_TOKEN }}/sendDocument
-      
+        run: echo $ReleaseMessageForTelegram
+
       - name: Send Release Message to telegram bot
         run: | 
           curl --location '$SendMessageUrl' \
