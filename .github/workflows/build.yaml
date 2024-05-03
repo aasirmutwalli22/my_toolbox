@@ -45,5 +45,11 @@ jobs:
         run: |
           curl -F "document=build/app/outputs/flutter-apk/app-arm64-v8a-release.apk" \
                -F "chat_id=${{ secrets.TELEGRAM_BOT_PERSONAL_CHAT_ID }}" \
-               -F "caption=ToolBox build:${{github.run_number}}" \
+               -F "caption=ToolBox arm64 build:${{github.run_number}}" \
+               https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendDocument
+      - name: Send build files to telegram 
+        run: |
+          curl -F "document=build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk" \
+               -F "chat_id=${{ secrets.TELEGRAM_BOT_PERSONAL_CHAT_ID }}" \
+               -F "caption=ToolBox arm build:${{github.run_number}}" \
                https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendDocument
