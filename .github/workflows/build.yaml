@@ -27,11 +27,11 @@ jobs:
       - name: Build APK
         run: flutter build apk --release --split-per-abi
 
-  # release:
-    # name: Release APK
-    # needs: build
-    # runs-on: ubuntu-latest
-    # steps:
+  release:
+    name: Release APK
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Release on GitHub 
         id: create-new-release
         uses: actions/create-release@v1
@@ -49,11 +49,11 @@ jobs:
           asset_name: ToolBox-arm64-v8a-${{github.run_number}}.apk
           asset_content_type: application/apk
 
-  # deploy_to_telegram:
-    # name: Deploy release
-    # needs: build
-    # runs-on: ubuntu-latest
-    # steps:
+  deploy_to_telegram:
+    name: Deploy release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Create Telegram Push Messages
         env:
           ReleaseMessageForTelegram: |
